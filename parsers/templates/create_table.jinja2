@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS {{ table_name }}
+(
+{% for col in columnDefs %}
+        {{ col.name }} {{ col.data_type }}{% if not col.is_nullable %} NOT NULL{% endif %}{% if col.is_unique %} UNIQUE{% endif %}{% if col.is_primary_key %} PRIMARY KEY{% endif %}{% if not loop.last %},{% endif %}
+{% endfor %}
+)
+{% if parent_table %}INHERITS ({{ parent_table }}){% endif %}

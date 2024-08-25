@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS {{ table_name }} (
+    {{ from_table }}_id VARCHAR(36) REFERENCES {{ from_table }}({{ from_ref_column }}) NOT NULL,
+    {{ to_table }}_id VARCHAR(36) REFERENCES {{ to_table }}({{ to_ref_column }}) NOT NULL,
+    PRIMARY KEY ({{ from_table }}_id, {{ to_table }}_id)
+)
+
+CREATE INDEX IF NOT EXISTS idx_{{ table_name }}_{{ from_table }}_id ON {{ table_name }}({{ from_table }}_id);
+CREATE INDEX IF NOT EXISTS idx_{{ table_name }}_{{ to_table }}_id ON {{ table_name }}({{ to_table }}_id);
