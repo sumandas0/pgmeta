@@ -12,5 +12,3 @@ PGMeta is a Python library designed to simplify the management of PostgreSQL dat
 - Support for custom output directories
 
 ## Installation
-
-To install PGMeta, you need Python 3.12 or later. Use pip to install the package
